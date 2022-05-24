@@ -1,13 +1,10 @@
-package ru.project.GUI;
+package ru.project.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import ru.project.controllers.ControllerIncorrectData;
-import ru.project.controllers.ControllerInputData;
-import ru.project.controllers.ControllerMainMenu;
 
 import java.io.IOException;
 
@@ -16,6 +13,13 @@ public class GUI extends Application {
     private Stage primaryStage;
     private Stage inputStage;
     private Stage incorrectStage;
+    private Stage deleteStage;
+    private Stage updateStage;
+    private final String tableCarPath = "/view/tableCar.fxml";
+    private final String inputCarPath = "/view/inputCar.fxml";
+    private final String incorrectDataPath = "/view/incorrectData.fxml";
+    private final String deleteDataPath = "/view/deleteWindow.fxml";
+    private final String updateDataPath = "/view/updateData.fxml";
 
     private FXMLLoader loader(Stage stage, String path){
         FXMLLoader loader = new FXMLLoader();
@@ -30,25 +34,36 @@ public class GUI extends Application {
     }
 
     private void showMainMenu(){
-            FXMLLoader loader = loader(primaryStage, "/view/tableCar.fxml");
-            ControllerMainMenu controller = loader.getController();
-            primaryStage.show();
+        loader(primaryStage, tableCarPath);
+        primaryStage.show();
     }
 
     public void showInputMenu(){
-            inputStage = new Stage();
-            FXMLLoader loader = loader(inputStage, "/view/inputCar.fxml");
-            inputStage.setTitle("Input Data");
-            ControllerInputData controller = loader.getController();
-            inputStage.show();
+        inputStage = new Stage();
+        loader(inputStage, inputCarPath);
+        inputStage.setTitle("Input Data");
+        inputStage.show();
+    }
+
+    public void showUpdateMenu(){
+        updateStage = new Stage();
+        loader(updateStage, updateDataPath);
+        updateStage.setTitle("Update Data");
+        updateStage.show();
     }
 
     public void showIncorrectMenu(){
         incorrectStage = new Stage();
-        FXMLLoader loader = loader(incorrectStage, "/view/incorrectData.fxml");
+        loader(incorrectStage, incorrectDataPath);
         incorrectStage.setTitle("Incorrect Data");
-        ControllerIncorrectData controller = loader.getController();
         incorrectStage.show();
+    }
+
+    public void showDeleteMenu(){
+        deleteStage = new Stage();
+        loader(deleteStage, deleteDataPath);
+        deleteStage.setTitle("delete window");
+        deleteStage.show();
     }
 
 
@@ -62,6 +77,5 @@ public class GUI extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
     }
 }

@@ -1,4 +1,4 @@
-package ru.project.Repository;
+package ru.project.repository;
 
 import java.sql.SQLException;
 
@@ -49,22 +49,13 @@ public class AddData {
         repository.getStmt().executeUpdate(query);
     }
 
-    public void addData(String name, String brand, String VIN,
-                        String number, String model, String country, String year) throws SQLException {
-        repository.getConnection().setAutoCommit(false);
-        try {
-            addPeople(name);
-            addCountry(country);
-            addBrand(brand);
-            addModel(model, brand);
-            addCar(model, VIN, year);
-            addOwnerCar(name, number, country, VIN);
-            repository.getConnection().commit();
-        } catch (Exception e) {
-            System.out.println("Incorrect data");
-            repository.getConnection().rollback();
-        } finally {
-            repository.getConnection().close();
-        }
+    public void addCarData(String name, String brand, String VIN,
+                           String number, String model, String country, String year) throws SQLException {
+        addPeople(name);
+        addCountry(country);
+        addBrand(brand);
+        addModel(model, brand);
+        addCar(model, VIN, year);
+        addOwnerCar(name, number, country, VIN);
     }
 }

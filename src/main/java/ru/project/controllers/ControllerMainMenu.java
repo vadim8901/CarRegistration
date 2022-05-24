@@ -9,9 +9,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import ru.project.GUI.GUI;
-import ru.project.Repository.Repository;
-import ru.project.Repository.SearchData;
+import ru.project.gui.GUI;
+import ru.project.repository.Repository;
+import ru.project.repository.SearchData;
 import ru.project.entities.Car;
 
 import java.net.URL;
@@ -52,6 +52,14 @@ public class ControllerMainMenu implements Initializable {
     @FXML
     private Button newButton;
 
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button updateButton;
+
+
+
     private void addDataInTable(){
         repository = new Repository();
         searchData = new SearchData(repository);
@@ -63,12 +71,25 @@ public class ControllerMainMenu implements Initializable {
         carTable.setItems(list);
     }
 
-    private void clickNewDataButton(){
-        newButton.setOnAction(event -> {
+    @FXML
+    private void clickNewData(){
             Stage stage = (Stage) newButton.getScene().getWindow();
             stage.close();
             new GUI().showInputMenu();
-        });
+    }
+
+    @FXML
+    private void clickUpdateData(){
+        Stage stage = (Stage) newButton.getScene().getWindow();
+        stage.close();
+        new GUI().showUpdateMenu();
+    }
+
+    @FXML
+    private void clickDeleteData(){
+        Stage stage = (Stage) newButton.getScene().getWindow();
+        stage.close();
+        new GUI().showDeleteMenu();
     }
 
     @Override
@@ -81,6 +102,5 @@ public class ControllerMainMenu implements Initializable {
         number.setCellValueFactory(new PropertyValueFactory<Car, String>("number"));
         year.setCellValueFactory(new PropertyValueFactory<Car, String>("year"));
         addDataInTable();
-        clickNewDataButton();
     }
 }

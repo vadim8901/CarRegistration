@@ -25,7 +25,7 @@
             <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input number" wrappingWidth="240.0" />
             <Text layoutX="281.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input country" wrappingWidth="290.39999999999986" />
             <Text layoutX="14.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input name" wrappingWidth="240.0" />
-            <Button fx:id="okButton" layoutX="169.0" layoutY="263.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="223.0" text="OK" />
+            <Button fx:id="okButton" onAction="#inputData" layoutX="169.0" layoutY="263.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="223.0" text="OK" />
          </children>
       </AnchorPane>
    </children>

@@ -1,4 +1,4 @@
-package ru.project.Repository;
+package ru.project.repository;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -46,7 +46,7 @@ public class SearchData {
                 return rs.getInt(1);
             }
         } catch (SQLException e){
-            throw new RuntimeException("Incorrect query");
+            throw new RuntimeException("Incorrect query", e);
         }
         return -1;
     }
@@ -56,22 +56,27 @@ public class SearchData {
         return getIdData(query);
     }
 
+    int searchPeopleFromOwnerCar(String vin){
+        String query = "SELECT people_id FROM owner_car WHERE car_id="+searchCar(vin);
+        return getIdData(query);
+    }
+
     int searchCountry(String country) {
         String query = "SELECT id FROM country WHERE country = '" + country + "';";
         return getIdData(query);
     }
 
-    int searchBrand(String brand) throws SQLException {
+    int searchBrand(String brand) {
         String query = "SELECT id FROM brand WHERE brand = '" + brand + "';";
         return getIdData(query);
     }
 
-    int searchModel(String model) throws SQLException {
+    int searchModel(String model) {
         String query = "SELECT id FROM model WHERE model = '" + model + "';";
         return getIdData(query);
     }
 
-    int searchCar(String VIN) throws SQLException {
+    int searchCar(String VIN) {
         String query = "SELECT id FROM car WHERE vin = '" + VIN + "';";
         return getIdData(query);
     }

@@ -5,9 +5,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import ru.project.GUI.GUI;
-import ru.project.Repository.AddData;
-import ru.project.Repository.Repository;
+import ru.project.gui.GUI;
+import ru.project.repository.AddData;
+import ru.project.repository.Repository;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,36 +40,36 @@ public class ControllerInputData implements Initializable {
     @FXML
     private Button okButton;
 
+    @FXML
     private void inputData(){
-        okButton.setOnAction(event -> {
-            Stage stage = (Stage) okButton.getScene().getWindow();
-                if (inputName.getText().equals("") || inputBrand.getText().equals("") ||
-                        inputVIN.getText().equals("") || inputNumber.getText().equals("") ||
-                        inputModel.getText().equals("") || inputCountry.getText().equals("") ||
-                        inputYear.getText().equals("")) {
-                    stage.close();
-                    new GUI().showIncorrectMenu();
-                } else {
-                    try {
-                    repository = new Repository();
-                    addData = new AddData(repository);
-                    addData.addData(inputName.getText(), inputBrand.getText(),
-                            inputVIN.getText(), inputNumber.getText(),
-                            inputModel.getText(), inputCountry.getText(),
-                            inputYear.getText());
-                } catch(Exception e){
-                    System.out.println("Incorrect input data");
-                    new GUI().showIncorrectMenu();
-                } finally {
-                        new GUI().start(new Stage());
-                        stage.close();
-                    }
+        Stage stage = (Stage) okButton.getScene().getWindow();
+        repository = new Repository();
+        addData = new AddData(repository);
+        if (inputName.getText().equals("") || inputBrand.getText().equals("") ||
+                inputVIN.getText().equals("") || inputNumber.getText().equals("") ||
+                inputModel.getText().equals("") || inputCountry.getText().equals("") ||
+                inputYear.getText().equals("")) {
+            stage.close();
+            new GUI().showIncorrectMenu();
+        } else {
+            repository.setAutoCommit(false);
+            try {
+                addData.addCarData(inputName.getText(), inputBrand.getText(),
+                        inputVIN.getText(), inputNumber.getText(),
+                        inputModel.getText(), inputCountry.getText(),
+                        inputYear.getText());
+                repository.commit();
+            } catch(Exception e){
+                repository.rollback();
+                throw new RuntimeException("incorrect input data", e);
+            } finally {
+                new GUI().start(new Stage());
+                repository.disconnect();
+                stage.close();
             }
-        });
+        }
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        inputData();
-    }
+    public void initialize(URL location, ResourceBundle resources) { }
 }

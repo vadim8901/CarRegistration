@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import ru.project.GUI.GUI;
+import ru.project.gui.GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,24 +17,19 @@ public class ControllerIncorrectData implements Initializable {
     @FXML
     private Button tryAgainButton;
 
+    @FXML
     private void setTryAgainButton(){
-        tryAgainButton.setOnAction(event -> {
-            Stage stage = (Stage) tryAgainButton.getScene().getWindow();
-            stage.close();
-            new GUI().showInputMenu();
-        });
+        Stage stage = (Stage) tryAgainButton.getScene().getWindow();
+        stage.close();
+        new GUI().showInputMenu();
     }
 
+    @FXML
     public void setCancelButton(){
-        cancelButton.setOnAction(event -> {
-            Stage stage = (Stage) cancelButton.getScene().getWindow();
-            stage.close();
-        });
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        setTryAgainButton();
-        setCancelButton();
-    }
+    public void initialize(URL location, ResourceBundle resources) { }
 }

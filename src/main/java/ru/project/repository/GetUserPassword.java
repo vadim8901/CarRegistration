@@ -1,4 +1,4 @@
-package ru.project.Repository;
+package ru.project.repository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

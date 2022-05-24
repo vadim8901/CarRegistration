@@ -16,8 +16,8 @@
                </font>
             </Text>
             <Text layoutX="41.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try again to enter the data" wrappingWidth="327.7366828918457" />
-            <Button fx:id="cancelButton" layoutX="301.0" layoutY="142.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" text="cancel" />
-            <Button fx:id="tryAgainButton" layoutX="206.0" layoutY="142.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" text="Try again" />
+            <Button fx:id="cancelButton" onAction="#setCancelButton" layoutX="301.0" layoutY="142.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" text="cancel" />
+            <Button fx:id="tryAgainButton" onAction="#setTryAgainButton" layoutX="190.0" layoutY="142.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" text="Try again" />
          </children>
       </AnchorPane>
    </children>

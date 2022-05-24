@@ -7,27 +7,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.project.controllers.ControllerMainMenu">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.project.controllers.ControllerMainMenu">
    <children>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="375.0" prefWidth="607.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="402.0" prefWidth="818.0">
          <children>
             <ScrollPane prefHeight="322.0" prefWidth="818.0">
                <content>
-                  <TableView fx:id="carTable" prefHeight="266.0" prefWidth="818.0">
+                  <TableView fx:id="carTable" prefHeight="318.0" prefWidth="818.0">
                      <columns>
                         <TableColumn fx:id="VIN" minWidth="120.0" prefWidth="75.0" text="VIN" />
-                        <TableColumn fx:id="number" minWidth="100.0" prefWidth="75.0" text="Номер" />
-                        <TableColumn fx:id="brand" minWidth="100.0" prefWidth="75.0" text="Марка" />
-                        <TableColumn fx:id="model" prefWidth="75.0" text="Модель" />
-                        <TableColumn fx:id="country" prefWidth="75.0" text="Страна" />
-                        <TableColumn fx:id="year" prefWidth="75.0" text="Год" />
-                        <TableColumn fx:id="name" minWidth="270.0" prefWidth="75.0" text="ФИО" />
+                        <TableColumn fx:id="number" minWidth="100.0" prefWidth="75.0" text="Number" />
+                        <TableColumn fx:id="brand" minWidth="100.0" prefWidth="75.0" text="Brand" />
+                        <TableColumn fx:id="model" prefWidth="75.0" text="Model" />
+                        <TableColumn fx:id="country" prefWidth="75.0" text="Country" />
+                        <TableColumn fx:id="year" prefWidth="75.0" text="Year" />
+                        <TableColumn fx:id="name" minWidth="270.0" prefWidth="75.0" text="Name" />
                      </columns>
                   </TableView>
                </content>
             </ScrollPane>
-            <Button fx:id="newButton" layoutX="709.0" layoutY="335.0" minWidth="100.0" mnemonicParsing="false" text="New" />
+            <Button fx:id="newButton" layoutX="709.0" layoutY="335.0" minWidth="100.0" mnemonicParsing="false" onAction="#clickNewData" text="New" />
+            <Button fx:id="updateButton" layoutX="599.0" layoutY="335.0" minWidth="100.0" mnemonicParsing="false" onAction="#clickUpdateData" text="Update" />
+            <Button fx:id="deleteButton" layoutX="489.0" layoutY="335.0" minWidth="100.0" mnemonicParsing="false" onAction="#clickDeleteData" text="Delete" />
          </children>
       </AnchorPane>
    </children>
